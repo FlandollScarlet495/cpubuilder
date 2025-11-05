@@ -1,0 +1,74 @@
+# CPUBuilder
+
+CPUBuilderは、Pythonで CPU エミュレータを作成するためのヘルパーライブラリです。
+バイナリデータの操作、命令セットの定義、メモリ操作、デバッグ機能など、
+CPUエミュレータの開発に必要な機能を提供します。
+
+## インストール方法
+
+```bash
+pip install cpubuilder
+```
+
+## 主な機能
+
+- バイナリデータ操作ユーティリティ
+- デコレータを使用した簡単な命令セット定義
+- メモリ操作ヘルパー
+- 充実したデバッグツール
+
+## 使用例
+
+### 命令セットの定義
+
+```python
+from cpubuilder import InstructionBase, instruction
+
+class MyInstructionSet(InstructionBase):
+    @instruction(opcode=0x00, cycles=1, description="No operation")
+    def nop(self):
+        pass
+
+    @instruction(opcode=0x10, cycles=2, description="Load immediate value")
+    def load_immediate(self, reg: int, value: int):
+        self.registers[reg] = value
+```
+
+### メモリ操作
+
+```python
+from cpubuilder import MemoryHelper
+
+memory = MemoryHelper(size=65536)
+memory.write(0x1000, 0xFF)
+value = memory.read(0x1000)
+```
+
+### デバッグ機能
+
+```python
+from cpubuilder import DebugTools
+
+debug = DebugTools()
+debug.add_breakpoint(0x1000)
+debug.add_watch("R0", lambda: cpu.registers[0])
+debug.start_trace()
+```
+
+### バイナリデータ操作
+
+```python
+from cpubuilder import BinaryHelper
+
+data = BinaryHelper.to_bytes(0xFF, 2)
+value = BinaryHelper.extract_bits(0xFF, 4, 4)
+```
+
+## ライセンス
+
+このプロジェクトはMITライセンスの下で公開されています。
+
+## 貢献
+
+バグ報告や機能リクエストは、GitHubのIssueで受け付けています。
+プルリクエストも歓迎です。

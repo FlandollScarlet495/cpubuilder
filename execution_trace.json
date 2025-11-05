@@ -1,0 +1,56 @@
+[
+  {
+    "step": 1,
+    "time": 1.0013580322265625e-05,
+    "state": {
+      "pc": 3,
+      "instruction": "load_immediate",
+      "registers": [
+        5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "time": 1.6927719116210938e-05,
+    "state": {
+      "pc": 6,
+      "instruction": "load_immediate",
+      "registers": [
+        5,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "time": 2.002716064453125e-05,
+    "state": {
+      "pc": 9,
+      "instruction": "add",
+      "registers": [
+        8,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  }
+]
