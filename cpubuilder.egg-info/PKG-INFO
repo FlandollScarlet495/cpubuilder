@@ -4,7 +4,7 @@ Version: 0.1.0
 Summary: A library for building CPU emulators in Python
 Home-page: https://github.com/FlandollScarlet495/cpubuilder
 Author: Yukino Kotone
-Author-email: Your Name <nakamurakensuke5@gmail.com>
+Author-email: YukinoKotone <nakamurakensuke5@gmail.com>
 License: MIT
 Project-URL: Homepage, https://github.com/FlandollScarlet495/cpubuilder
 Project-URL: Repository, https://github.com/FlandollScarlet495/cpubuilder.git
