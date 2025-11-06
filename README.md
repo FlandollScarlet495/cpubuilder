@@ -68,6 +68,10 @@ value = BinaryHelper.extract_bits(0xFF, 4, 4)
 
 このプロジェクトはMITライセンスの下で公開されています。
 
+## HTMLREADME
+
+<https://flandollscarlet495.github.io/cpubuilder/>
+
 ## 貢献
 
 バグ報告や機能リクエストは、GitHubのIssueで受け付けています。
