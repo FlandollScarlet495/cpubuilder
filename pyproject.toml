@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.7"
 license = {text = "MIT"}
 authors = [
-    {name = "Your Name", email = "nakamurakensuke5@gmail.com"}
+    {name = "YukinoKotone", email = "nakamurakensuke5@gmail.com"}
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
