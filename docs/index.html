@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CPUBuilder — ドキュメント</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>CPUBuilder</h1>
+    <p>PythonでCPUエミュレータを構築するための補助ライブラリ</p>
+    <nav>
+      <a href="index.html">概要</a> |
+      <a href="api.html">API参照</a> |
+      <a href="examples.html">サンプル</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>インストール</h2>
+      <p>PyPIからインストールできます（TestPyPIで動作確認済み）。</p>
+      <pre><code>pip install cpubuilder</code></pre>
+      <p>TestPyPI から試す場合：</p>
+      <pre><code>pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple cpubuilder==0.1.0</code></pre>
+    </section>
+
+    <section>
+      <h2>クイックスタート</h2>
+      <p>まずインポート：</p>
+      <pre><code>from cpubuilder import BinaryHelper, MemoryHelper, InstructionBase, instruction, DebugTools</code></pre>
+
+      <p>簡単なメモリ操作例：</p>
+      <pre><code># MemoryHelper の使用例
+mem = MemoryHelper(1024)
+mem.write(0, 0x12, size=1)
+print(mem.read(0))  # 0x12
+
+# BinaryHelper の例
+b = BinaryHelper.to_bytes(0x1234, 2)
+print(BinaryHelper.from_bytes(b))
+</code></pre>
+
+      <p>命令セットをデコレータで定義：</p>
+      <pre><code>class MyCPU(InstructionBase):
+    @instruction(opcode=0x10, cycles=2, description="Load immediate")
+    def load_immediate(self, reg: int, value: int):
+        self.registers[reg] = value
+</code></pre>
+
+      <p>詳しい使い方は <a href="api.html">API参照</a> と <a href="examples.html">サンプル</a> を参照してください。</p>
+    </section>
+
+    <section>
+      <h2>ライセンスと貢献</h2>
+      <p>このプロジェクトは MIT ライセンスです。貢献は GitHub のプルリクエストで受け付けます。</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 FlandollScarlet495</p>
+  </footer>
+</body>
+</html>

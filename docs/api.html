@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CPUBuilder API 参照</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>API 参照</h1>
+    <nav>
+      <a href="index.html">概要</a> |
+      <a href="api.html">API参照</a> |
+      <a href="examples.html">サンプル</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>モジュール概要</h2>
+      <p>主要なエクスポート：</p>
+      <ul>
+        <li><strong>BinaryHelper</strong> — バイト列と整数・ビット操作のユーティリティ</li>
+        <li><strong>InstructionBase, instruction</strong> — 命令セットの定義を補助する基底とデコレータ</li>
+        <li><strong>InstructionSetBuilder</strong> — 命令をプログラム的に登録するビルダー</li>
+        <li><strong>MemoryHelper</strong> — メモリ読み書き、ウォッチ、ダンプなど</li>
+        <li><strong>DebugTools, CPUStateFormatter</strong> — ブレークポイント、トレース、ウォッチ、フォーマット</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>BinaryHelper</h2>
+      <p>主なメソッド：</p>
+      <dl>
+        <dt>to_bytes(value: int, size: int, endian: str = 'little') → bytes</dt>
+        <dd>整数をバイト列に変換します。</dd>
+
+        <dt>from_bytes(data: bytes, endian: str = 'little') → int</dt>
+        <dd>バイト列を整数に変換します。</dd>
+
+        <dt>pack_struct / unpack_struct</dt>
+        <dd>struct パック/アンパックラッパー</dd>
+
+        <dt>extract_bits / set_bits / create_bit_mask</dt>
+        <dd>ビット操作ユーティリティ</dd>
+      </dl>
+    </section>
+
+    <section>
+      <h2>InstructionBase / instruction</h2>
+      <p>命令はデコレータ <code>@instruction(opcode=..., cycles=..., description="...")</code> で定義します。デコレータは命令メタデータ（opcode, cycles, description, parameters）をメソッドに紐付けます。</p>
+
+    </section>
+
+    <section>
+      <h2>MemoryHelper</h2>
+      <p>read, write, dump, fill, copy, add_watch, remove_watch などを提供します。ウォッチポイントは指定アドレスへの書き込み時にコールバックを呼び出します。</p>
+    </section>
+
+    <section>
+      <h2>DebugTools / CPUStateFormatter</h2>
+      <p>ブレークポイント、トレース開始/停止、トレース保存（JSON）、ウォッチ評価などを提供します。CPU の現在状態を見やすくフォーマットするユーティリティを含みます。</p>
+    </section>
+
+    <section>
+      <h2>注意事項</h2>
+      <ul>
+        <li>型チェックや詳細な引数検証は必要に応じて実装してください。</li>
+        <li>デフォルトでは簡潔さを優先しています。実運用では追加の堅牢性チェックを推奨します。</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p><a href="index.html">トップに戻る</a></p>
+  </footer>
+</body>
+</html>

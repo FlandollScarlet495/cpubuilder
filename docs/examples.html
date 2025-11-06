@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CPUBuilder — サンプル</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>サンプル: SimpleCPU</h1>
+    <nav>
+      <a href="index.html">概要</a> |
+      <a href="api.html">API参照</a> |
+      <a href="examples.html">サンプル</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>examples/simple_cpu.py の実行</h2>
+      <p>パッケージに含めたサンプルは <code>examples/simple_cpu.py</code> にあります。簡易的な命令セットを定義し、LOAD/ADD 系の命令を実行します。</p>
+
+      <h3>サンプルコード（抜粋）</h3>
+      <pre><code>from cpubuilder import InstructionBase, instruction, MemoryHelper, DebugTools
+
+class SimpleCPU(InstructionBase):
+    def __init__(self):
+        super().__init__()
+        self.registers = [0] * 8
+        self.memory = MemoryHelper(65536)
+        self.pc = 0
+        self.debug = DebugTools()
+
+    @instruction(opcode=0x10, cycles=2)
+    def load_immediate(self, reg: int, value: int):
+        self.registers[reg] = value
+        self.pc += 3
+
+# 実行: python examples/simple_cpu.py
+</code></pre>
+
+      <h3>実行方法</h3>
+      <ol>
+        <li>リポジトリのルートに移動</li>
+        <li>必要ならパッケージをインストール: <code>pip install -e .</code></li>
+        <li>サンプルを実行: <code>python examples/simple_cpu.py</code></li>
+      </ol>
+
+      <p>他の例や詳細はリポジトリの <code>examples/</code> ディレクトリを参照してください。</p>
+    </section>
+  </main>
+  <footer>
+    <p><a href="index.html">トップに戻る</a></p>
+  </footer>
+</body>
+</html>
